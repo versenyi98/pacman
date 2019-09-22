@@ -98,7 +98,7 @@ mozog.A játék végállapota kétféle lehet sikeres vagy sikertelen, amit rend
 úgy érhetünk el, hogy sikeresen felszedjük a pályán található összes pontot    
 anélkül, hogy a szellemek elkapjanak, a sikertelen játék véget pedig úgy lehet    
 elérni, hogy a játékos kifogy életekből.A játék állapotának lementése a kijelölt    
-billentyűzet gomb lenyomásakor kell majd megtörténnie, a játék állapotának
+billentyűzet gomb lenyomásakor kell majd megtörténnie, a játék állapotának    
 lementése több kicsi más feladattal is jár amit ugyanúgy tesztelnünk kell,    
 például a játék állapotot képesek kell legyünk be is tölteni.A játékos szellem-    
 mel való ütközésének eredményét is kellőképpen kell ellenőrizni, nagyon fontos    
