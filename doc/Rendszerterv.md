@@ -79,23 +79,38 @@ meghaladja az ingyenes keretekben biztosított számot.
 ### 10. Implementációs terv
 ### 11. Tesztterv
 Az appliációban elsősorban az üzleti logika kerül tesztelésre, ami a játékos   
-helyváltoztatásából,a játékos és szellem ütközéséből, az elért pontszámok    
-ellenőrzéséből, a szellemek mozgásából és a játék sikeres végállapota eléréséből   
-áll.A játékos helyváltoztatásának tesztelése akkor jár sikerrel ha a    
-felhasználló által beérkezett inputra, a Pacman helyesen mozdult el egy 'mezőt'    
-horizontálisan vagy vertikálisan, természetesen a speciális eseteket is    
-figyelembe kell venni, például a pálya végének elérése illetve szellemmel való    
-ütközés. Pontszámok ellenőrzése triviális, a pályáról felvett pontok értékével    
-kibővítjük a pontszám számlalót.A szellemek következő lépésének tesztelése    
-kevésbé triviális, figyelembe kell venni a szellem típusát illetve egyes    
-szellem típusok mozgatásához kell tudjuk a Pacman jelenlegi helyzetét a pályán.    
-A szellemek lehetnek: piros, rózsaszín, világoskék, narancssárga típusúak/   
-színűek, mindegyik egyéni módon járkál a pályán, a piros szellem szorosan követi   
-a játékost, a rózsaszín szellem próbál mindíg a játékos elé állni, a világoskék   
-szellem őrködik egy terület zónán amit folyamtosan oda-vissza bejár illetve a    
-narancssárga szellem véletlenszerűen mozog.A játék végállapota kétféle lehet   
-sikeres vagy sikertelen, amit rendre úgy érhetünk el, hogy sikeresen felszedjük    
-a pályán található összes pontot anélkül, hogy a szellemek elkapjanak, a sikertelen    
-játék véget pedig úgy lehet elérni, hogy a játékos kifogy életekből.
+helyváltoztatásából,a játékos és szellem ütközéséből,a játék állapotának     
+lementéséből, az elért pontszámok ellenőrzéséből, a szellemek mozgásából és a     
+játék sikeres végállapota eléréséből áll.A játékos helyváltoztatásának     
+tesztelése akkor jár sikerrel ha a felhasználló által beérkezett inputra, a    
+Pacman helyesen mozdult el egy 'mezőt' horizontálisan vagy vertikálisan,    
+természetesen a speciális eseteket is figyelembe kell venni, például a pálya     
+végének elérése illetve szellemmel való ütközés. Pontszámok ellenőrzése     
+triviális, a pályáról felvett pontok értékével kibővítjük a pontszám számlalót.    
+A szellemek következő lépésének tesztelése kevésbé triviális, figyelembe kell    
+venni a szellem típusát illetve egyes szellem típusok mozgatásához kell tudjuk    
+a Pacman jelenlegi helyzetét a pályán.A szellemek lehetnek: piros, rózsaszín,    
+világoskék, narancssárga típusúak/színűek, mindegyik egyéni módon járkál a    
+pályán, a piros szellem szorosan követi a játékost, a rózsaszín szellem próbál    
+mindíg a játékos elé állni, a világoskék szellem őrködik egy terület zónán     
+amit folyamtosan oda-vissza bejár illetve a narancssárga szellem véletlenszerűen    
+mozog.A játék végállapota kétféle lehet sikeres vagy sikertelen, amit rendre    
+úgy érhetünk el, hogy sikeresen felszedjük a pályán található összes pontot    
+anélkül, hogy a szellemek elkapjanak, a sikertelen játék véget pedig úgy lehet    
+elérni, hogy a játékos kifogy életekből.A játék állapotának lementése a kijelölt    
+billentyűzet gomb lenyomásakor kell majd megtörténnie, a játék állapotának
+lementése több kicsi más feladattal is jár amit ugyanúgy tesztelnünk kell,    
+például a játék állapotot képesek kell legyünk be is tölteni.A játékos szellem-    
+mel való ütközésének eredményét is kellőképpen kell ellenőrizni, nagyon fontos    
+hogy ennek az interakciónak a hatását a felhasználó azonnal érzékelje különben    
+kellemetlen játék szituációk állhatnak elő, illetve a rendszeren belül is     
+kritikus jellegű hibákat észlelhetnénk.Az üzleti logikán kívül az alkalmazás    
+rezponzívitását is kellőképpen tesztelnünk kell, pontosabban azt, hogy minden     
+kliens oldalról érkező bemenet a helyes funkciót eredményezze és akadálymentesen    
+dolgozza fel a program, azért hogy a termék megőrizhesse felhasználóbarát     
+tulajdonságát.Végső sorban szükség van az adatbázis és program közötti,     
+adatátmenet ellenőrzésére, ebben az esetben az számít helyes eredménynek a     
+tesztelésnél, ha az applikáció által előállított adatok és az adatbázisban     
+tárolt adatok, megegyeznek. 
 ### 12. Telepítési terv
 ### 13. Karbantartási  terv
