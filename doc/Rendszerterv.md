@@ -2,6 +2,22 @@ Pacman projekt Rendszerterv
 =============================
 
 ### 1. A rendszer célja
+A rendszerünk célja, hogy egy egységes platformot teremtsünk a mai játékok   
+őseinek számára. Egyszerűvé tenni a régi játékokat kedvelők számára a 
+szenvedélyük gyakorlását. Manapság egész nehéz hozzájutni az huszadik   
+századi játékokhoz eredeti formájukban, később pedig egyenesen lehetetlen lesz,   
+ez volt a motiváció a rendszer fejlesztése mögött. A játékosok játszhatnak csak   
+szórakozásból, kitüntetéseket szerezhetnek bizonyos mérföldkövek elérése után,   
+illetve versenyezhetnek, megmérkőzhetnek egymással.   
+   
+Elsőnek a rendszer előzetes verziójába még csak a Pac-Man névre hallgató   
+ikonikus játék kerül be. A játékban egy sárga figurával, Pac-Man-nel kell   
+pontokat szerezni, de ezt négy szellem, Pinky, Inky, Blinky és Clyde próbálja   
+megakadályozni. A cél az, hogy a pályán elérhető összes pontot megszerezzük   
+Pac-Mannel, úgy, hogy a szellemekkel nem érintkezünk. A játék fejleszti a   
+játékosok problémamegoldó képességét, mivel a négy szellem különböző módon   
+próbálja meg Pac-Mant csapdába ejteni. Mind a négy szellem stratégiáját   
+ki kell számolni, és el kell kerülni őket.
 ### 2. Projekt terv
 ### 3. Üzleti   folyamatok   modellje
 ### 4. Követelmények
