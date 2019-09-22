@@ -9,7 +9,13 @@ változatát találnánk meg, hanem egy módosított verziót, ami lehet vagy
 lebutított vagy elképesztően nehéz, ami mindkét esetben elveszi úgy a fiatalok    
 kedvét mint a már idősebb generációk kedvét a játéktól.Ha pedig mégis     
 megtalálnánk egy megfelelő eredeti verziót, nem kapnánk lehetőséget arra, hogy    
-online összemérjük a teljesítményünket. 
+online összemérjük a teljesítményünket.Ugyanakkor, manapság a játékok egyre     
+több erőforrást vesznek igénybe, ami nagyon költséges tud lenni, főleg a     
+technológia robbanószerű fejlődése miatt, nem túlzás azt kijelenteni, hogy a     
+legfrissebb játékokat 'teljesen kiélvezni', kis vagyonba kerül, még akkor is    
+ha csak 1-2 alkatrészt kell vásárolni.Egyre kevesebb olyan játékot látunk amely    
+széleskörű felhasználóbázisnak tud minőségi időtöltési lehetőséget biztosítani    
+megengedhető pénzügyi kereteken belül. 
 
 ### 2. Vágyalom rendszer
 #### Főmenü
