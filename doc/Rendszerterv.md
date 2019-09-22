@@ -3,7 +3,7 @@ Pacman projekt Rendszerterv
 
 ### 1. A rendszer célja
 A rendszerünk célja, hogy egy egységes platformot teremtsünk a mai játékok   
-őseinek számára. Egyszerűvé tenni a régi játékokat kedvelők számára a 
+őseinek számára. Egyszerűvé tenni a régi játékokat kedvelők számára a   
 szenvedélyük gyakorlását. Manapság egész nehéz hozzájutni az huszadik   
 századi játékokhoz eredeti formájukban, később pedig egyenesen lehetetlen lesz,   
 ez volt a motiváció a rendszer fejlesztése mögött. A játékosok játszhatnak csak   
