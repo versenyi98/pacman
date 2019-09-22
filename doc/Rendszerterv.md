@@ -19,6 +19,47 @@ játékosok problémamegoldó képességét, mivel a négy szellem különböző
 próbálja meg Pac-Mant csapdába ejteni. Mind a négy szellem stratégiáját   
 ki kell számolni, és el kell kerülni őket.
 ### 2. Projekt terv
+A projektre összesen két hétnyi idő áll rendelkezésre. A feladaton négy   
+egyetemi hallgató dolgozik másodállásban. Az időbeosztás a következő:   
+ * 2019 szeptember 16. - 2019. szeptember 22.:
+     * Ötletelés
+     * Dokumentáció létrehozása
+     * Feladatokra bontás
+     * Szerepkörök felosztása
+ * 2019 szeptember 23 - 2019. szeptember 29.:
+     * Dokumentáció véglegesítése
+     * Projekt implementálása
+ * 2019 szeptember 30 - :
+      * Karbantartás
+
+A szerepkörök a következőképp oszlanak meg:
+* Ádám Szilárd: 
+    * Fő terület: Pac-Man irányítása az állapottérreprezentációnak
+    és a felhasználói bemenet által
+    * A szellemek mesterséges intelligenciájának implementálása
+    * Grafikus felhasználói interfész (GUI) fejlesztése
+* Dimény Áron: 
+     * Fő terület: Grafikus felhasználói interfész (GUI) fejlesztése
+     * Pac-Man irányítása az állapottérreprezentációnak
+    és a felhasználói bemenet által
+     * A szellemek mesterséges intelligenciájának implementálása
+     * Pac-Man irányítása az állapottérreprezentációnak
+    és a felhasználói bemenet által
+* Varga Erik Szilveszter: 
+    * Fő terület: A szellemek mesterséges intelligenciájának implementálása
+    * Pac-Man irányítása az állapottérreprezentációnak
+    és a felhasználói bemenet által
+    * Grafikus felhasználói interfész (GUI) fejlesztése
+    * Pac-Man irányítása az állapottérreprezentációnak
+    * A játék állapottérreprezentációjának implementálása
+    és a felhasználói bemenet által
+* Versényi Péter
+    * Fő terület: A játék állapottérreprezentációjának implementálása
+    * Pac-Man irányítása az állapottérreprezentációnak
+    és a felhasználói bemenet által
+    * Grafikus felhasználói interfész (GUI) fejlesztése
+    * Pac-Man irányítása az állapottérreprezentációnak
+
 ### 3. Üzleti   folyamatok   modellje
 ### 4. Követelmények
 ### 5. Funkcionális  terv
