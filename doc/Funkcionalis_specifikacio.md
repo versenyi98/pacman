@@ -2,6 +2,14 @@ Pacman projekt Funkcionális Specifikáció
 ==========================================
 
 ### 1. Jelenlegi helyzet
+A mai napokban egyre nehezebb a 80-as 90-es évek ikonikus játékait jó minőségű    
+formában elérni, pedig az igény ezekre a csodálatos alkotásokra még mindíg     
+óriási.Manapság ha rákeresünk egy klasszikus játékra valószínüleg nem az eredeti    
+változatát találnánk meg, hanem egy módosított verziót, ami lehet vagy     
+lebutított vagy elképesztően nehéz, ami mindkét esetben elveszi úgy a fiatalok    
+kedvét mint a már idősebb generációk kedvét a játéktól.Ha pedig mégis     
+megtalálnánk egy megfelelő eredeti verziót, nem kapnánk lehetőséget arra, hogy    
+online összemérjük a teljesítményünket. 
 
 ### 2. Vágyalom rendszer
 #### Főmenü
