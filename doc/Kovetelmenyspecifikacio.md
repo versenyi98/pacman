@@ -2,17 +2,17 @@ Pacman projekt Követelményspecifikáció
 ==========================================
 
 ### 1. Áttekintés
-A terméknek egy széleskörű hallgatóság venne hasznát.A szürke mindennapok
-megszüntetése valósítható meg a program segítségével.A program főbb
-funkciói a kihívó pályák betöltése, mesterséges intelligencia által
-vezérelt szellemek létrehozása és üzemeltetése, a legjobb eredmények
-tárolása és mutatása.A felhasználókat két csoportra lehet felosztani,
-kompetitív szellem szerint, hiszen az applikáció egy kellemes időtöltést
-kell nyújtson bármilyen korosztálynak, de ugyanakkor biztosítani kell egy
-olyan kompetitív kört is a játékon belül, amely kielégíti a verseny szinten
-küzdő játékosokat.A programnak kis teljesítményű, eszközön, főleg személyes
-gépeken működnie kell, hiszen egy ilyen sokszínű felhasználóbázis ugyanolyan
-sokféle eszközzel rendelkezik.A hálózati hozzáférés csak akkor legyen kötelező,
+A terméknek egy széleskörű hallgatóság venne hasznát.A szürke mindennapok<br/>
+megszüntetése valósítható meg a program segítségével.A program főbb<br/>
+funkciói a kihívó pályák betöltése, mesterséges intelligencia által<br/>
+vezérelt szellemek létrehozása és üzemeltetése, a legjobb eredmények<br/>
+tárolása és mutatása.A felhasználókat két csoportra lehet felosztani,<br/>
+kompetitív szellem szerint, hiszen az applikáció egy kellemes időtöltést<br/>
+kell nyújtson bármilyen korosztálynak, de ugyanakkor biztosítani kell egy<br/>
+olyan kompetitív kört is a játékon belül, amely kielégíti a verseny szinten<br/>
+küzdő játékosokat.A programnak kis teljesítményű, eszközön, főleg személyes<br/>
+gépeken működnie kell, hiszen egy ilyen sokszínű felhasználóbázis ugyanolyan<br/>
+sokféle eszközzel rendelkezik.A hálózati hozzáférés csak akkor legyen kötelező,<br/>
 ha a felhaszáló össze szeretné mérni elért sikereit a világgal.
  
 ### 2. Jelenlegi helyzet
