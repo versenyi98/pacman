@@ -38,7 +38,7 @@ A játék megnyitásakor ezzel a menüvel találja magát szembe a felhasználó
 * <kbd>R</kbd>: Az aktuális játszma újraindítása. Az újraindítás szándékát meg   
 kell erősíteni, a felugró ablakban feltett kérdésre adott megfelelő válasszal.   
 * <kbd>ESC</kbd> A játék szünetelése. Szünet közben megjelenő menüben megjelenő   
-menüből elérhető három opció:
+menüből elérhető öt opció:
   * `Beállítások` A Főmenü "Beállítások" menüpontjával ekvivalens opció.   
   * `Visszajátszás` Az adott játszma eddigi eseményenek visszatekintése.
   * `Toplisták` A Pac-Man játékhoz tartozó ranglisták megjelenítése.   

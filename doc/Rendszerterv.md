@@ -64,7 +64,7 @@ A szerepkörök a következőképp oszlanak meg:
 ### 3. Üzleti   folyamatok   modellje
 ### 4. Követelmények
 ### 5. Funkcionális  terv
-### 6. Fizikaikörnyezet
+### 6. Fizikai környezet
 Az applikáció fejlesztése Java nyelven fog történni és működőképes lesz cross-   
 platform, azaz Linux, Windows és Mac alatt is működni fog. Az applikáció    
 fejlesztéséhez a Java alapértelmezett eszközein kívül a JavaFX is szükséges    
