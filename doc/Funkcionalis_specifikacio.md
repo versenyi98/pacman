@@ -20,8 +20,13 @@ mennek ki a divatból és egyre nehezebb egyetlen helyen megtalálni azokat a
 klasszikus játékokat, amiért régen siettunk haza iskolából.
 ### 2. Vágyalom rendszer
 #### Főmenü
-[Főmenü leírása: Játékaim (könyvtár), toplisták (napi, heti, havi, évi,   
-örökranglista, országos, nemzetközi stb.) Fiókom, Beállítások, Barátok, stb. menükkel]   
+A játék megnyitásakor ezzel a menüvel találja magát szembe a felhasználó, ahol a következő elemekre navigálhat tovább:
+* Játékaim (könyvtár): tartalmazza az elérhető játékokat, legelőször csak a pacmant.
+* Toplisták: a különböző időszakokra és/vagy területekre vonatkozó toplistákat lehet itt elolvasni, az azt elérő játékosok nicknevével és pontszámával.
+* Fiókom: a játékos fiókjának beállításait és adatait tartalmazza és kezeli.
+* Beállítások: a program konfigurációját kezeli. Ilyenek pl. a képernyőfelbontás, a nehézség, a billentyűvel való irányítás beállításai.
+* Barátok: azoknak a más játékosoknak a listáját jeleníti meg és kezeli, kik barátéknt vannak felvéve a jelenlegi játékosnak. Elhelyezhető a legfelső szinten, vagy a `profilom` menüpontban.
+* Egyéb menüpontok, melyeknek létjogosultsága még nem tiszta, azonban a játék fejlesztése során felmerül   .
 
 #### Pac-Man
 ###### Irányítás
