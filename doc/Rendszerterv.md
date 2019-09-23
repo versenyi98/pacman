@@ -34,10 +34,11 @@ egyetemi hallgató dolgozik másodállásban. Az időbeosztás a következő:
 
 A szerepkörök a következőképp oszlanak meg:
 * Ádám Szilárd: 
-    * Fő terület: Pac-Man irányítása az állapottérreprezentációnak
+    * Fő terület: Pac-Man irányítása az állapottérreprezentáció
     és a felhasználói bemenet által
     * A szellemek mesterséges intelligenciájának implementálása
     * Grafikus felhasználói interfész (GUI) fejlesztése
+    * adatbázis fejlesztése, tesztelése, és optimalizálása
 * Dimény Áron: 
      * Fő terület: Grafikus felhasználói interfész (GUI) fejlesztése
      * Pac-Man irányítása az állapottérreprezentációnak
@@ -65,7 +66,7 @@ A szerepkörök a következőképp oszlanak meg:
 ### 5. Funkcionális  terv
 ### 6. Fizikaikörnyezet
 Az applikáció fejlesztése Java nyelven fog történni és működőképes lesz cross-   
-platform, azaz Linux, Windows és Mac alatt is működni fog.Az applikáció    
+platform, azaz Linux, Windows és Mac alatt is működni fog. Az applikáció    
 fejlesztéséhez a Java alapértelmezett eszközein kívül a JavaFX is szükséges    
 lesz.A cég által preferált integrált fejlesztési környezet az Intellij IDEA,    
 ami két formában is elérhető, jelen van egy ingyenes és egy fizetős változat   
@@ -76,6 +77,15 @@ meghaladja az ingyenes keretekben biztosított számot.
 ### 7. Absztrakt   domain   modell
 ### 8. Architekturális terv
 ### 9. Adatbázis terv
+Az applikáció egy fontos funkciója igényli a háttérbeli adatbázis használatát. Ez minden valószínűséggel egy általunk üzemeltetett linux szerveren futó MySQL adatbázis lesz.
+
+Ez a funkció a toplista, mely a legjobb eredményeket elért játékosok pontjait tárolja örök, havi, heti, és napi lebontásban. Ehhez szükséges lesz egy táblára, mely eltárolja a pontot elért játékosok nicknevét, pontszámát, és annak elérésének dátumát és idejét. A táblából érdemes lesz napi rendszerességgel kiszórni azokat az eredményeket, melyek egyik toplistára sem kerülhetnek fel pontszámuk alapján. Ez segíteni fog elkerülni az adatbázis méretének akár exponenciális növekedését.
+
+Az applikáció és az adatbázis kommunikációja php fájlok felé intézett GET és POST kéréseken keresztül valósul meg. Minimálisan szükség lesz 2 PHP fájlra:
+* az újonnan szerzett pontok beillesztéséhez
+* a toplisták lekéréséhez (mely megkaphatja paraméterként, melyik listára van szükség)
+
+Ezeken kívül felmerülhet a szükség kiegészítő/segítő fájlok és funkciók iránt, melyek egyszerűsítik majd az adatok lekérésére szolgáló kód szerkezetét.
 ### 10. Implementációs terv
 ### 11. Tesztterv
 Az appliációban elsősorban az üzleti logika kerül tesztelésre, ami a játékos   
