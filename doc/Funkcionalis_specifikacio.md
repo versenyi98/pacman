@@ -15,8 +15,9 @@ technológia robbanószerű fejlődése miatt, nem túlzás azt kijelenteni, hog
 legfrissebb játékokat 'teljesen kiélvezni', kis vagyonba kerül, még akkor is    
 ha csak 1-2 alkatrészt kell vásárolni.Egyre kevesebb olyan játékot látunk amely    
 széleskörű felhasználóbázisnak tud minőségi időtöltési lehetőséget biztosítani    
-megengedhető pénzügyi kereteken belül. 
-
+megengedhető pénzügyi kereteken belül.Mindezek felül, manapság a játéktermek      
+mennek ki a divatból és egyre nehezebb egyetlen helyen megtalálni azokat a     
+klasszikus játékokat, amiért régen siettunk haza iskolából.
 ### 2. Vágyalom rendszer
 #### Főmenü
 [Főmenü leírása: Játékaim (könyvtár), toplisták (napi, heti, havi, évi,   
