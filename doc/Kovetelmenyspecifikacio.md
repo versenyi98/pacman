@@ -16,6 +16,7 @@ sokféle eszközzel rendelkezik.A hálózati hozzáférés csak akkor legyen kö
 ha a felhaszáló össze szeretné mérni elért sikereit a világgal.
  
 ### 2. Jelenlegi helyzet
+A játéktermi gépek kezdenek kimenni a divatból, így az olyan játékok - mint a pacman is - melyek ezeken a gépeken futottak, manapság szétszórva találhatóak meg az interneten különböző fejlesztők általi újraírások formájában, sokszor flash játékként, mely maga is elöregedő, és egyre kevésbé támogatott technológia.
 
 ### 3. Vágyalom rendszer
 A kitűzött cél egy olyan rendszert létrehozni, melyben a 80-as 90-es évek   
