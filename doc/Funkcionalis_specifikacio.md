@@ -48,5 +48,14 @@ menüből elérhető öt opció:
   A felhasználó eldöntheti, hogy a jelenlegi állapotot elmentse-e a rendszer.   
 
 ### 3. Jelenlegi üzleti folyamatok modellje
-
+* A játékosnak kedve van játszani.
+* Kikeresi a legközelebbi játékterem címét.
+* Magához vesz egy zsák aprópénzt.
+* 20-30 perc alatt eljut a játékterembe (jobb esetben).
+* Amíg kedve van játszani és maradt még pénze:
+  * Pénzt dob a játékgépbe.
+  * Játszik.
+  * Ha magas pontszámot ért el:
+    * Opcionálisan megadja a nevét a toplista miatt.
+* 20-30 perc alatt hazaér szegényebben (jobb esetben).
 ### 4. Igényelt üzleti folyamatok modellje
