@@ -26,12 +26,13 @@ public class Pacman extends Entity {
         positionY += velocityY;
     }
 
-    public Image rotateImg() {
+    private Image rotateImg() {
         ImageView iv = new ImageView(getImage());
         iv.setRotate(rotation);
         return iv.snapshot(params, null);
     }
 
+    // Pacman needs to change its image rotation depends on which direction it's facing
     @Override
     public void render(GraphicsContext gc) {
         gc.drawImage( rotateImg(), positionX, positionY );
