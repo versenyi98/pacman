@@ -3,7 +3,6 @@ package Java.Controllers;
 import static Java.Main.*;
 
 import Java.UI.Map;
-import Java.UI.Model.Block;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -27,7 +26,7 @@ public class MapDrawer {
         for (int i = 0; i < 28; i++) {
             for (int n = 0; n < 31; n++) {
                 if (Map.map[n][i] == 0) {
-                    background.getGraphicsContext2D().fillRect(Block.SIZE*i, Block.SIZE*n, Block.SIZE, Block.SIZE);
+                    background.getGraphicsContext2D().fillRect(BLOCK_SIZE*i, BLOCK_SIZE*n, BLOCK_SIZE, BLOCK_SIZE);
                     continue;
                 }
                 if (Map.map[n][i] % pacman.getId() == 0) {
@@ -75,6 +74,6 @@ public class MapDrawer {
     }
 
     private double getBlockCoords(int b) {
-        return Block.SIZE*b;
+        return BLOCK_SIZE*b;
     }
 }

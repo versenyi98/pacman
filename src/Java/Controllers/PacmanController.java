@@ -1,7 +1,6 @@
 package Java.Controllers;
 
 import Java.UI.Map;
-import Java.UI.Model.Block;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -32,7 +31,7 @@ class PacmanController {
     private void setPacmanStrait() {
         int newPosX = getBlockCoords(pacman.getPositionX() + pacman.getWidth()/2);
         int newPosY = getBlockCoords(pacman.getPositionY() + pacman.getHeight()/2);
-        pacman.setPosition(newPosX * Block.SIZE,newPosY * Block.SIZE );
+        pacman.setPosition(newPosX * BLOCK_SIZE,newPosY * BLOCK_SIZE );
     }
 
     private int[] canMove(KeyCode code) {
@@ -110,11 +109,11 @@ class PacmanController {
     }
 
     private double getBlockCoords(int b) {
-        return Block.SIZE*b;
+        return BLOCK_SIZE*b;
     }
 
     private int getBlockCoords(double b) {
-        return (int)(b/Block.SIZE);
+        return (int)(b/BLOCK_SIZE);
     }
 
     private void setUpMovement() {

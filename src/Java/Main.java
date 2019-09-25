@@ -1,7 +1,6 @@
 package Java;
 
 import Java.Controllers.*;
-import Java.UI.Model.Block;
 import Java.UI.Model.Ghost;
 import Java.UI.Model.Pacman;
 import javafx.application.Application;
@@ -11,14 +10,15 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    public static Pacman pacman = new Pacman(2);
-    public static Ghost blinky = new Ghost(3);
-    public static Ghost pinky = new Ghost(5);
-    public static Ghost inky = new Ghost(7);
-    public static Ghost clyde = new Ghost(11);
+    public static final Pacman pacman = new Pacman(2);
+    public static final Ghost blinky = new Ghost(3);
+    public static final Ghost pinky = new Ghost(5);
+    public static final Ghost inky = new Ghost(7);
+    public static final Ghost clyde = new Ghost(11);
     public static MapDrawer mapDrawer;
-    public static final double WINDOW_HEIGHT = 31 * Block.SIZE;
-    public static final double WINDOW_WIDTH = 28 * Block.SIZE;
+    public static final int BLOCK_SIZE = 18;
+    public static final double WINDOW_HEIGHT = 31 * BLOCK_SIZE;
+    public static final double WINDOW_WIDTH = 28 * BLOCK_SIZE;
 
     @Override
     public void start(Stage primaryStage) {

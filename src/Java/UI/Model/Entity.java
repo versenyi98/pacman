@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 public class Entity {
     protected double positionX;
     protected double positionY;
-    private int id;
+    private final int id;
     private int blockX;
     private int blockY;
     private double width;

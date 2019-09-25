@@ -3,7 +3,6 @@ package Java.Controllers;
 import static Java.Main.*;
 
 import Java.UI.Map;
-import Java.UI.Model.Block;
 import Java.UI.Model.Entity;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -64,8 +63,8 @@ public class MainController {
     }
 
     private void updateRepresentation(Entity e) {
-        int posX = (int)(e.getPositionX() / Block.SIZE);
-        int posY = (int)(e.getPositionY() / Block.SIZE);
+        int posX = (int)(e.getPositionX() / BLOCK_SIZE);
+        int posY = (int)(e.getPositionY() / BLOCK_SIZE);
         if (posX < 0 || posX > 27 || posY < 0 || posY > 30) return;
         Map.map[e.getBlockY()][e.getBlockX()] /= e.getId();
         Map.map[posY][posX] *= e.getId();
