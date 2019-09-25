@@ -1,11 +1,9 @@
 package Java.Controllers;
 
 import Java.UI.Map;
-import Java.UI.Model.Block;
 import Java.UI.Model.Ghost;
 
-import static Java.Main.mapDrawer;
-import static Java.Main.pacman;
+import static Java.Main.*;
 
 public class BaseGhostBehaviour {
 
@@ -24,7 +22,7 @@ public class BaseGhostBehaviour {
             randY = (int)(Math.random()*100)%31;
             if (Map.map[randY][randX] > 0) {
                 System.out.println("Beszartam...  o.O");
-                ghost.setPosition(randX* Block.SIZE,randY*Block.SIZE);
+                ghost.setPosition(randX* BLOCK_SIZE,randY*BLOCK_SIZE);
                 mapDrawer.renderEntities();
             } else {
                 behaviour(ghost);
