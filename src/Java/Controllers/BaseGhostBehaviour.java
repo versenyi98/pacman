@@ -16,6 +16,9 @@ public class BaseGhostBehaviour {
         ghost.init(e -> behaviour(ghost));
     }
 
+    /**
+     * Just checks for collision and if it happens replaces the ghost...
+     * */
     private void behaviour(Ghost ghost) {
         if (ghost.intersects(pacman)) {
             randX = (int)(Math.random()*100)%28;

@@ -17,7 +17,6 @@ public class MainController {
         BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
 
         pacman.setImage("resources/pacman.png");
-
         blinky.setImage("resources/ghost1.png");
         pinky.setImage("resources/ghost2.png");
         inky.setImage("resources/ghost3.png");
@@ -32,6 +31,8 @@ public class MainController {
 
         PacmanController pacmanController = new PacmanController();
         mainScene.setOnKeyPressed(pacmanController::handleKeyPress);
+
+        // Temporary...  just prints out the current map representation
         mainScene.setOnMouseClicked(e -> {
             for (int c = 0; c < 31; c++) {
                 System.out.print("{");
@@ -43,6 +44,7 @@ public class MainController {
             }
         });
 
+        // Renders the entities and updates the map array
         KeyFrame kf = new KeyFrame(Duration.seconds(1.0 / 30.0),e -> {
             mapDrawer.renderEntities();
             updateRepresentation();
@@ -63,11 +65,14 @@ public class MainController {
     }
 
     private void updateRepresentation(Entity e) {
+        // Get the current position in the map array from the real coords
         int posX = (int)(e.getPositionX() / BLOCK_SIZE);
         int posY = (int)(e.getPositionY() / BLOCK_SIZE);
+
+        // In case of an entity goes out of the map would cause out of bound...
         if (posX < 0 || posX > 27 || posY < 0 || posY > 30) return;
-        Map.map[e.getBlockY()][e.getBlockX()] /= e.getId();
-        Map.map[posY][posX] *= e.getId();
-        e.setBlockPos(posX,posY);
+        Map.map[e.getBlockY()][e.getBlockX()] /= e.getId(); // Removes from the old pos
+        Map.map[posY][posX] *= e.getId(); // Adds to the new
+        e.setBlockPos(posX,posY); // Saves the new pos
     }
 }

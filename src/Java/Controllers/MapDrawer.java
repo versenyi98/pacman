@@ -21,14 +21,26 @@ public class MapDrawer {
         root.getChildren().addAll(background, entities);
 	}
 
+	/**
+     * Renders the walls and sets the positions of the entities
+     * */
 	void renderMap() {
 	    background.getGraphicsContext2D().setFill(Color.color(0,0,0.8,0.8));
         for (int i = 0; i < 28; i++) {
             for (int n = 0; n < 31; n++) {
+
+                // If its 0 means its a wall "Nothing else matters"  -Metallica
                 if (Map.map[n][i] == 0) {
                     background.getGraphicsContext2D().fillRect(BLOCK_SIZE*i, BLOCK_SIZE*n, BLOCK_SIZE, BLOCK_SIZE);
                     continue;
                 }
+
+                // If map[n][i] can be divided by xy means an entity is there
+                // For example:
+                // 3 - Blinky is there
+                // 5 - Pinky is there
+                // 15 - Blinky and Pinky are both there
+                // Sets the its there pos in the BO
                 if (Map.map[n][i] % pacman.getId() == 0) {
                     pacman.setBlockPos(i, n);
                     pacman.setPosition(getBlockCoords(i), getBlockCoords(n));
@@ -54,17 +66,21 @@ public class MapDrawer {
         }
     }
 
+    /**
+     * Actually renders the entities
+     * */
     void renderEntities() {
+        // Clears the canvas (there are 2 separated for the entities and the background)
         entities.getGraphicsContext2D().clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
         for (int i = 0; i < 28; i++) {
             for (int n = 0; n < 31; n++) {
 
                 int v = Map.map[n][i];
-                if (v == 0) {
-                    continue;
-                }
 
-                if (v % 2 == 0) pacman.render( entities.getGraphicsContext2D());
+                // We don't need to render the walls again
+                if (v == 0) continue;
+
+                if (v % pacman.getId() == 0) pacman.render( entities.getGraphicsContext2D());
                 if (v % blinky.getId() == 0) blinky.render(entities.getGraphicsContext2D() );
                 if (v % pinky.getId() == 0) pinky.render(entities.getGraphicsContext2D() );
                 if (v % inky.getId() == 0) inky.render(entities.getGraphicsContext2D() );

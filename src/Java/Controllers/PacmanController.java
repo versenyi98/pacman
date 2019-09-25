@@ -28,15 +28,23 @@ class PacmanController {
         }
     }
 
+    /**
+     * If the player changes direction too early or too late it will make pacman strait
+     */
     private void setPacmanStrait() {
         int newPosX = getBlockCoords(pacman.getPositionX() + pacman.getWidth()/2);
         int newPosY = getBlockCoords(pacman.getPositionY() + pacman.getHeight()/2);
         pacman.setPosition(newPosX * BLOCK_SIZE,newPosY * BLOCK_SIZE );
     }
 
+    /**
+     * Checks if pacman can move before actually changing direction
+     */
     private int[] canMove(KeyCode code) {
         int[] retVal;
         int rotation;
+
+        // Sets the velocity: { x, y } and the rotation of pacman's image
         switch (code) {
             case LEFT:
                 retVal = new int[]{-1, 0};
@@ -54,6 +62,8 @@ class PacmanController {
                 retVal = new int[]{ 0, 1};
                 rotation = 90;
                 break;
+
+            // For testing only...  Blinky can be moved...
             case W:
                 blinky.setPosition(blinky.getPositionX(),blinky.getPositionY()-2);
                 return null;
@@ -70,13 +80,16 @@ class PacmanController {
                 return null;
         }
 
+        // Going to the opposite direction of the current movement direction is always allowed
         if (retVal[0] * pacman.getVelocityX() < 0 || retVal[1] * pacman.getVelocityY() < 0) {
             pacman.setRotation(rotation);
             return retVal;
         } else if (retVal[0] * pacman.getVelocityX() > 0 || retVal[1] * pacman.getVelocityY() > 0) {
+            // Going to the same direction as pacman currently moving is unnecessary
             return null;
         }
 
+        // if the player wants to change direction it checks if there's free block next to pacman
         int currentBlock_x = getBlockCoords(pacman.getPositionX() + pacman.getWidth()/2);
         int currentBlock_y = getBlockCoords(pacman.getPositionY() + pacman.getHeight()/2);
         double dif = 6;
@@ -90,6 +103,9 @@ class PacmanController {
         return null;
     }
 
+    /**
+     * Checks if pacman can move forward or it should stop moving
+     */
     private boolean canMove(double newX, double newY) {
         double addX = 0;
         double addY = 0;
@@ -98,7 +114,7 @@ class PacmanController {
         if (pacman.getVelocityX() > 0) addX = pacman.getWidth();
         if (pacman.getVelocityY() > 0) addY = pacman.getHeight();
 
-        // Next block coordinates
+        // Next block's coordinates
         int row = getBlockCoords(newX + addX);
         int col = getBlockCoords(newY + addY);
 

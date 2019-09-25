@@ -5,11 +5,15 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Entity {
+    // Actual position
     protected double positionX;
     protected double positionY;
-    private final int id;
+
+    // Position in the representation
     private int blockX;
     private int blockY;
+
+    private final int id;
     private double width;
     private double height;
     private Image image;
