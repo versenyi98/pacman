@@ -28,9 +28,9 @@ public class MapDrawer {
 	    background.getGraphicsContext2D().setFill(Color.color(0,0,0.8,0.8));
         for (int i = 0; i < 28; i++) {
             for (int n = 0; n < 31; n++) {
-
-                // If its 0 means its a wall "Nothing else matters"  -Metallica
-                if (Map.map[n][i] == 0) {
+                int block = Map.get(i,n);
+                // If its 0 means its a wall
+                if (block == 0) {
                     background.getGraphicsContext2D().fillRect(BLOCK_SIZE*i, BLOCK_SIZE*n, BLOCK_SIZE, BLOCK_SIZE);
                     continue;
                 }
@@ -41,23 +41,23 @@ public class MapDrawer {
                 // 5 - Pinky is there
                 // 15 - Blinky and Pinky are both there
                 // Sets the its there pos in the BO
-                if (Map.map[n][i] % pacman.getId() == 0) {
+                if (block % pacman.getId() == 0) {
                     pacman.setBlockPos(i, n);
                     pacman.setPosition(getBlockCoords(i), getBlockCoords(n));
                 }
-                if (Map.map[n][i] % blinky.getId() == 0) {
+                if (block % blinky.getId() == 0) {
                     blinky.setBlockPos(i, n);
                     blinky.setPosition(getBlockCoords(i), getBlockCoords(n));
                 }
-                if (Map.map[n][i] % pinky.getId() == 0) {
+                if (block % pinky.getId() == 0) {
                     pinky.setBlockPos(i, n);
                     pinky.setPosition(getBlockCoords(i), getBlockCoords(n));
                 }
-                if (Map.map[n][i] % inky.getId() == 0) {
+                if (block % inky.getId() == 0) {
                     inky.setBlockPos(i, n);
                     inky.setPosition(getBlockCoords(i), getBlockCoords(n));
                 }
-                if (Map.map[n][i] % clyde.getId() == 0) {
+                if (block % clyde.getId() == 0) {
                     clyde.setBlockPos(i, n);
                     clyde.setPosition(getBlockCoords(i), getBlockCoords(n));
                 }
@@ -75,7 +75,7 @@ public class MapDrawer {
         for (int i = 0; i < 28; i++) {
             for (int n = 0; n < 31; n++) {
 
-                int v = Map.map[n][i];
+                int v = Map.get(i,n);
 
                 // We don't need to render the walls again
                 if (v == 0) continue;

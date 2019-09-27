@@ -38,7 +38,7 @@ public class MainController {
                 System.out.print("{");
                 for (int r = 0; r < 28; r++)  {
                     if (r != 0) System.out.print(",");
-                    System.out.print(Map.map[c][r]);
+                    System.out.print(Map.get(r,c));
                 }
                 System.out.println("},");
             }
@@ -68,11 +68,8 @@ public class MainController {
         // Get the current position in the map array from the real coords
         int posX = (int)(e.getPositionX() / BLOCK_SIZE);
         int posY = (int)(e.getPositionY() / BLOCK_SIZE);
-
-        // In case of an entity goes out of the map would cause out of bound...
-        if (posX < 0 || posX > 27 || posY < 0 || posY > 30) return;
-        Map.map[e.getBlockY()][e.getBlockX()] /= e.getId(); // Removes from the old pos
-        Map.map[posY][posX] *= e.getId(); // Adds to the new
-        e.setBlockPos(posX,posY); // Saves the new pos
+        int oldX = e.getBlockX();
+        int oldY = e.getBlockY();
+        if (posX != oldX || posY != oldY) Map.move(e,oldX,oldY,posX,posY);
     }
 }

@@ -1,6 +1,7 @@
 package Java.Controllers;
 
 import Java.UI.Map;
+import Java.Service.RepresentationService;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,6 +15,7 @@ class PacmanController {
 
     private int[] input;
     private Timeline pacmanTimeline = new Timeline();
+	private RepresentationService representationService = new RepresentationService();
 
     PacmanController() {
         pacmanTimeline.setCycleCount( Animation.INDEFINITE );
@@ -21,10 +23,40 @@ class PacmanController {
     }
 
     void handleKeyPress(KeyEvent keyEvent) {
-        int[] tmp = canMove(keyEvent.getCode());
-        if(tmp != null) {
-            input = tmp;
-            pacmanTimeline.play();
+        KeyCode code = keyEvent.getCode();
+        if (code == KeyCode.W || code == KeyCode.A || code == KeyCode.S || code == KeyCode.D) {
+            moveGhost(code);
+        }
+        if (representationService.invertKeyCode(code) == null) return;
+
+		int canMove = representationService.canMove(pacman, keyEvent.getCode());
+		if (canMove == 0) return;
+		if (canMove == 2) setPacmanStrait();
+
+        input = representationService.keyCodeToVelocity(code);
+		pacman.setRotation(getRotation());
+		pacmanTimeline.play();
+
+    }
+
+    private void moveGhost(KeyCode code) {
+        switch (code) {
+            case W:
+                if (representationService.canMove(blinky, KeyCode.UP) > 0)
+                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX(),blinky.getBlockY()-1);
+                break;
+            case A:
+                if (representationService.canMove(blinky, KeyCode.LEFT) > 0)
+                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX()-1,blinky.getBlockY());
+                break;
+            case S:
+                if (representationService.canMove(blinky, KeyCode.DOWN) > 0)
+                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX(),blinky.getBlockY()+1);
+                break;
+            case D:
+                if (representationService.canMove(blinky, KeyCode.RIGHT) > 0)
+                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX()+1,blinky.getBlockY());
+                break;
         }
     }
 
@@ -36,72 +68,10 @@ class PacmanController {
         int newPosY = getBlockCoords(pacman.getPositionY() + pacman.getHeight()/2);
         pacman.setPosition(newPosX * BLOCK_SIZE,newPosY * BLOCK_SIZE );
     }
-
-    /**
-     * Checks if pacman can move before actually changing direction
-     */
-    private int[] canMove(KeyCode code) {
-        int[] retVal;
-        int rotation;
-
-        // Sets the velocity: { x, y } and the rotation of pacman's image
-        switch (code) {
-            case LEFT:
-                retVal = new int[]{-1, 0};
-                rotation = 180;
-                break;
-            case RIGHT:
-                retVal = new int[]{ 1, 0};
-                rotation = 0;
-                break;
-            case UP:
-                retVal = new int[]{ 0,-1};
-                rotation = -90;
-                break;
-            case DOWN:
-                retVal = new int[]{ 0, 1};
-                rotation = 90;
-                break;
-
-            // For testing only...  Blinky can be moved...
-            case W:
-                blinky.setPosition(blinky.getPositionX(),blinky.getPositionY()-2);
-                return null;
-            case S:
-                blinky.setPosition(blinky.getPositionX(),blinky.getPositionY()+2);
-                return null;
-            case D:
-                blinky.setPosition(blinky.getPositionX()+2,blinky.getPositionY());
-                return null;
-            case A:
-                blinky.setPosition(blinky.getPositionX()-2,blinky.getPositionY());
-                return null;
-            default:
-                return null;
-        }
-
-        // Going to the opposite direction of the current movement direction is always allowed
-        if (retVal[0] * pacman.getVelocityX() < 0 || retVal[1] * pacman.getVelocityY() < 0) {
-            pacman.setRotation(rotation);
-            return retVal;
-        } else if (retVal[0] * pacman.getVelocityX() > 0 || retVal[1] * pacman.getVelocityY() > 0) {
-            // Going to the same direction as pacman currently moving is unnecessary
-            return null;
-        }
-
-        // if the player wants to change direction it checks if there's free block next to pacman
-        int currentBlock_x = getBlockCoords(pacman.getPositionX() + pacman.getWidth()/2);
-        int currentBlock_y = getBlockCoords(pacman.getPositionY() + pacman.getHeight()/2);
-        double dif = 6;
-
-        if (Map.map[currentBlock_y + retVal[1]][currentBlock_x + retVal[0]] > 0 &&
-                Math.abs(pacman.getPositionY() - getBlockCoords(currentBlock_y)) < dif) {
-            pacman.setRotation(rotation);
-            setPacmanStrait();
-            return retVal;
-        }
-        return null;
-    }
+	
+	private int getRotation() {
+		return ((Math.abs(input[0])-input[0])+input[1])*90;
+	}
 
     /**
      * Checks if pacman can move forward or it should stop moving
@@ -110,22 +80,18 @@ class PacmanController {
         double addX = 0;
         double addY = 0;
 
-        // Addition beacause of pacman's size
+        // Addition because of pacman's size
         if (pacman.getVelocityX() > 0) addX = pacman.getWidth();
         if (pacman.getVelocityY() > 0) addY = pacman.getHeight();
 
         // Next block's coordinates
-        int row = getBlockCoords(newX + addX);
-        int col = getBlockCoords(newY + addY);
+        int col = getBlockCoords(newX + addX);
+        int row = getBlockCoords(newY + addY);
 
         // If pacman goes out of the map (2 sides)
-        if ( row < 0 || row > 27) return true;
+        if ( col < 0 || col > 27) return true;
 
-        return Map.map[col][row] > 0;
-    }
-
-    private double getBlockCoords(int b) {
-        return BLOCK_SIZE*b;
+        return Map.get(col,row) > 0;
     }
 
     private int getBlockCoords(double b) {
