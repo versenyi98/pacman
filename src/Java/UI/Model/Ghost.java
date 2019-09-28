@@ -17,7 +17,7 @@ public class Ghost extends Entity {
 
     // Separate thread for the ghosts' custom behaviour
     public void init(EventHandler<ActionEvent> e) {
-        KeyFrame kf = new KeyFrame(Duration.seconds(1.0/10.0), e);
+        KeyFrame kf = new KeyFrame(Duration.seconds(0.25), e);
 
         testLoop = new Timeline();
         testLoop.getKeyFrames().add( kf );

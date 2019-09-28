@@ -5,6 +5,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Entity {
+
+    protected double velocityX;
+    protected double velocityY;
+
     // Actual position
     protected double positionX;
     protected double positionY;
@@ -74,5 +78,17 @@ public class Entity {
 
     public boolean intersects(Entity s) {
         return s.getBoundary().intersects( this.getBoundary() );
+    }
+
+    public double getVelocityX() { return velocityX; }
+    public double getVelocityY() { return velocityY; }
+    public  void  setVelocity(double velocityX, double velocityY) {
+        this.velocityX = velocityX;
+        this.velocityY= velocityY;
+    }
+
+    public void update() {
+        positionX += velocityX;
+        positionY += velocityY;
     }
 }
