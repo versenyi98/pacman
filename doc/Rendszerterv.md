@@ -102,6 +102,18 @@ fejlesztést.A termék verziókezeléséhez a Git lesz használva, pontosabban e
 privát repóra lesz majd szükség, mivel a projekten dolgozó fejlesztők száma    
 meghaladja az ingyenes keretekben biztosított számot.
 ### 7. Absztrakt   domain   modell
+A megvalósítandó rendszer a következő fő komponensekből tevődik össze
+* Entitás (Pacman, Ghost)
+* Pálya 
+* Pálya szerkesztő   
+   
+Az entitások, az aktuálisan betöltött pályán helyezkednek el és folyamatos   
+mozgásban vannak, egyes entitások mint példaul a szellemek(Ghost) a számítógép   
+által vannak irányítva és helyváltoztatásuk független a felhasználótól érkezett    
+inputoktól. A "Pacman" entitást vezérlő felhasználó a következő lépéseket képes   
+megtenni megfelelő input megadásával: 1 mezőt elmozdulni jobbra, balra, fel illetve    
+le. A pálya két féle lehet: hivatalos(ami eleve a játék része) és szerkesztett(amit a   
+felhasználók készíthetnek a pálya szerkesztő segítségével).
 ### 8. Architekturális terv
 A rendszerben található játékokat az MVC(Model - View - Controller) tervezési   
 minta segítségével valósítjuk meg. Az alkalmazás úgy lesz előállítva, hogy     
