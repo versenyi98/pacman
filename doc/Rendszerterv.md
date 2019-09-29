@@ -76,6 +76,20 @@ privát repóra lesz majd szükség, mivel a projekten dolgozó fejlesztők szá
 meghaladja az ingyenes keretekben biztosított számot.
 ### 7. Absztrakt   domain   modell
 ### 8. Architekturális terv
+A rendszerben található játékokat az MVC(Model - View - Controller) tervezési   
+minta segítségével valósítjuk meg. Az alkalmazás úgy lesz előállítva, hogy     
+skálázható legyen, de ugyanakkor a kezdeti erőforrások is kielégítő tapasztalatot    
+biztosítsanak a felhasználónak. Elősször tekintsünk egy kimondottan kis méretű   
+adatbázist, ami csak 100 felhasználó elért eredményét képes tárolni, ebben az    
+esetben az egyetlen szélsőséges eset az, amikor több felhasználónak ugyanolyan    
+eredménye van, de már nincs tárhely az adatbázisban. Ebben az esetben, annak a   
+felhasználónak az eredménye kerül be az adatbázisba, amelyik hamarabb elérte az   
+adott pontszámot.A változások kezelésénél két esetet különböztetünk meg: amikor   
+az adatbázis kapacitása nő ,illetve amikor az adatbázis kapacitása csökken. A csökkent    
+kapacitás esetén töröljük azokat a tárolt eredményeket, ameyek a jelenlegi toplista    
+alján vannak. A növelt kapacitás esetén, hasonlóképpen kezeljük a bejövő eredményeket,   
+mint az eredeti kapacitáskor, annyi különbséggel, hogy megnő a toplistában feltüntetett    
+eredmények száma.  
 ### 9. Adatbázis terv
 Az applikáció egy fontos funkciója igényli a háttérbeli adatbázis használatát. Ez minden valószínűséggel egy általunk üzemeltetett linux szerveren futó MySQL adatbázis lesz.
 
