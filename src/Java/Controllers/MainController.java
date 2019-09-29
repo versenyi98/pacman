@@ -15,7 +15,9 @@ public class MainController {
     public MainController(Scene mainScene) {
         mapDrawer = new MapDrawer(mainScene);
         BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
+
         BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
+        PinkyBehaviour pinkyBehaviour = new PinkyBehaviour();
 
         pacman.setImage("resources/pacman.png");
         blinky.setImage("resources/ghost1.png");
@@ -24,7 +26,7 @@ public class MainController {
         clyde.setImage("resources/ghost4.png");
 
         blinkyBehaviour.attachBehaviour(blinky);
-        baseGhostBehaviour.attachBehaviour(pinky);
+        pinkyBehaviour.attachBehaviour(pinky);
         baseGhostBehaviour.attachBehaviour(inky);
         baseGhostBehaviour.attachBehaviour(clyde);
 
