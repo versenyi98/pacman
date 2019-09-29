@@ -62,6 +62,33 @@ A szerepkörök a következőképp oszlanak meg:
     * Pac-Man irányítása az állapottérreprezentációnak
 
 ### 3. Üzleti   folyamatok   modellje
+1. Üzleti szereplők   
+      1. Külső   
+      * Partner   
+      * Alkalmi felhasználó   
+      * Törzsfelhasználó   
+      2. Belső   
+      * Programozó   
+      * Rendszergazda   
+      * Tesztelő   
+2. Üzleti folyamatok   
+      * Játszás   
+      * Tárolás   
+      * Megmérettetés   
+      * Pályakészítés   
+      * Üzemeltetés   
+3. Üzleti entitások   
+      * Játék   
+      * Toplista   
+      * Pálya   
+   
+
+   
+Felhasználó <kbd>&rarr;</kbd> Név kiválasztása <kbd>&rarr;</kbd> Pálya kiválasztása <kbd>&rarr;</kbd> Játszás <kbd>&rarr;</kbd> Játék vége <kbd>&rarr;</kbd> &#10226;    
+ Játék vége <kbd>&rarr;</kbd> Elért eredmény kimutatása <kbd>&rarr;</kbd> Elért eredmény beküldése a toplistába     
+Felhasználó <kbd>&rarr;</kbd> Pálya szerkesztő megnyitása <kbd>&rarr;</kbd> Új pálya létrehozása   
+
+  
 ### 4. Követelmények
 ### 5. Funkcionális  terv
 ### 6. Fizikai környezet
