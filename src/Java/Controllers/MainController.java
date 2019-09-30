@@ -8,12 +8,14 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class MainController {
 
-    public MainController(Scene mainScene) {
+    public MainController(Scene mainScene, Text scoreText) {
         mapDrawer = new MapDrawer(mainScene);
+        mapDrawer.setScoreText(scoreText);
         BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
 
         BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
@@ -77,5 +79,9 @@ public class MainController {
         int oldX = e.getBlockX();
         int oldY = e.getBlockY();
         if (posX != oldX || posY != oldY) Map.move(e,oldX,oldY,posX,posY);
+    }
+
+    public void setScoreText(Text text) {
+        mapDrawer.setScoreText(text);
     }
 }

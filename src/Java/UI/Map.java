@@ -1,8 +1,10 @@
 package Java.UI;
 
 import Java.UI.Model.Entity;
+import Java.UI.Model.Pacman;
 
 import static Java.Main.BLOCK_SIZE;
+import static Java.Main.mapDrawer;
 
 public class Map {
     private static Integer[][] map = {
@@ -40,6 +42,7 @@ public class Map {
     };
 
     public static int get(int x, int y) {
+
         if (isOut(x,y)) return -1;
         return map[y][x];
     }
@@ -69,6 +72,9 @@ public class Map {
         set(to_x, to_y,to_val*id);
 
         e.setBlockPos(to_x,to_y);
+        if (e instanceof Pacman && Map.get(to_x, to_y) != -1) {
+            ((Pacman) e).setScore(((Pacman) e).getScore() + 1);
+        }
     }
 
     private static void set(int x, int y, int val) {

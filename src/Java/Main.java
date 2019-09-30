@@ -6,7 +6,9 @@ import Java.UI.Model.Pacman;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -25,12 +27,18 @@ public class Main extends Application {
         Group root = new Group();
         Scene mainScene = new Scene(root);
         mainScene.setFill(Paint.valueOf("121212"));
+        Text scoreText = new Text(WINDOW_WIDTH / 2 - BLOCK_SIZE, BLOCK_SIZE * 5 + BLOCK_SIZE / 2, "Score: ");
+        scoreText.setFill(Color.YELLOW);
+        root.getChildren().add(scoreText);
 
         primaryStage.setTitle("Pac - Man");
         primaryStage.setScene(mainScene);
         primaryStage.setResizable(false);
 
-        MainController mainController = new MainController(mainScene);
+
+
+        MainController mainController = new MainController(mainScene, scoreText);
+
         primaryStage.show();
     }
 

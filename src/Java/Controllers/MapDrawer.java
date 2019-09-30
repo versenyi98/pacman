@@ -7,11 +7,13 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class MapDrawer {
     private Canvas background;
     private Canvas entities;
-	
+	private Text scoreText;
+
 	MapDrawer(Scene mainScene) {
         Group root = (Group) mainScene.getRoot();
 
@@ -25,7 +27,7 @@ public class MapDrawer {
      * Renders the walls and sets the positions of the entities
      * */
 	void renderMap() {
-	    background.getGraphicsContext2D().setFill(Color.color(0,0,0.8,0.8));
+        background.getGraphicsContext2D().setFill(Color.color(0,0,0.8,0.8));
         for (int i = 0; i < 28; i++) {
             for (int n = 0; n < 31; n++) {
                 int block = Map.get(i,n);
@@ -64,12 +66,14 @@ public class MapDrawer {
                 renderEntities();
             }
         }
+        background.getGraphicsContext2D().fillText(scoreText.getText(), 0, 0);
     }
 
     /**
      * Actually renders the entities
      * */
     void renderEntities() {
+        scoreText.setText("Score: " + pacman.getScore());
         // Clears the canvas (there are 2 separated for the entities and the background)
         entities.getGraphicsContext2D().clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
         for (int i = 0; i < 28; i++) {
@@ -91,5 +95,9 @@ public class MapDrawer {
 
     private double getBlockCoords(int b) {
         return BLOCK_SIZE*b;
+    }
+
+    public void setScoreText(Text scoreText) {
+        this.scoreText = scoreText;
     }
 }
