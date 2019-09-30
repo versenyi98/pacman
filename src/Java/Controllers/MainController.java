@@ -16,7 +16,7 @@ public class MainController {
     public MainController(Scene mainScene, Text scoreText) {
         mapDrawer = new MapDrawer(mainScene);
         mapDrawer.setScoreText(scoreText);
-        BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
+        BaseGhostController baseGhostController = new BaseGhostController();
 
         BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
         PinkyBehaviour pinkyBehaviour = new PinkyBehaviour();
@@ -34,6 +34,8 @@ public class MainController {
 
         baseGhostController.attachBehaviour(blinky);
         baseGhostController.attachBehaviour(pinky);
+        baseGhostController.attachBehaviour(inky);
+        baseGhostController.attachBehaviour(clyde);
 
         blinkyBehaviour.attachBehaviour(blinky);
         pinkyBehaviour.attachBehaviour(pinky);
