@@ -19,6 +19,8 @@ public class MainController {
         BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
         PinkyBehaviour pinkyBehaviour = new PinkyBehaviour();
         IncaBehaviour incaBehaviour = new IncaBehaviour();
+        ClydeBehaviour clydeBehaviour= new ClydeBehaviour();
+
 
         pacman.setImage("resources/pacman.png");
         blinky.setImage("resources/ghost1.png");
@@ -29,7 +31,7 @@ public class MainController {
         blinkyBehaviour.attachBehaviour(blinky);
         pinkyBehaviour.attachBehaviour(pinky);
         incaBehaviour.attachBehaviour(inky);
-        baseGhostBehaviour.attachBehaviour(clyde);
+        clydeBehaviour.attachBehaviour(clyde);
 
         mapDrawer.renderMap();
 
