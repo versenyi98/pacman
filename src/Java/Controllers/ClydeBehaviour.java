@@ -55,11 +55,14 @@ public class ClydeBehaviour {
             }
         }
 
-        int targetPositionX = pacmanX;
-        int targetPositionY = pacmanY;
-        if (Math.abs((ghostX + pacmanX) + (ghostY + pacmanY)) < 8) {
-            targetPositionX = ghostX + (pacmanX - ghostX);
-            targetPositionY = ghostY + (pacmanY- ghostY);
+        int targetPositionX = -1;
+        int targetPositionY = -1;
+        if (Math.abs((ghostX - pacmanX) + (ghostY - pacmanY)) < 8) {
+            targetPositionX = 1;
+            targetPositionY = 1;
+        } else {
+            targetPositionX = pacmanX;
+            targetPositionY = pacmanY;
         }
 
         ArrayList<ClydeBehaviour.State> opened = new ArrayList<ClydeBehaviour.State>();
