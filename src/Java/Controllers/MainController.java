@@ -8,17 +8,21 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class MainController {
 
-    private BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
-    private BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
-    private PinkyBehaviour pinkyBehaviour = new PinkyBehaviour();
-    private BaseGhostController baseGhostController = new BaseGhostController();
-
-    public MainController(Scene mainScene) {
+    public MainController(Scene mainScene, Text scoreText) {
         mapDrawer = new MapDrawer(mainScene);
+        mapDrawer.setScoreText(scoreText);
+        BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
+
+        BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
+        PinkyBehaviour pinkyBehaviour = new PinkyBehaviour();
+        IncaBehaviour incaBehaviour = new IncaBehaviour();
+        ClydeBehaviour clydeBehaviour= new ClydeBehaviour();
+
 
         pacman.setImage("resources/pacman.png");
         blinky.setImage("resources/ghost1.png");
@@ -33,8 +37,8 @@ public class MainController {
 
         blinkyBehaviour.attachBehaviour(blinky);
         pinkyBehaviour.attachBehaviour(pinky);
-        baseGhostBehaviour.attachBehaviour(inky);
-        baseGhostBehaviour.attachBehaviour(clyde);
+        incaBehaviour.attachBehaviour(inky);
+        clydeBehaviour.attachBehaviour(clyde);
 
 
 
@@ -54,7 +58,7 @@ public class MainController {
         });
 
         // Renders the entities and updates the map array
-        KeyFrame kf = new KeyFrame(Duration.seconds(1.0/30.0),e -> {
+        KeyFrame kf = new KeyFrame(Duration.seconds(1.0 / 30.0),e -> {
             mapDrawer.renderEntities();
             updateRepresentation();
         });
@@ -67,8 +71,6 @@ public class MainController {
 
     private void updateRepresentation() {
         updateRepresentation(pacman);
-        updateRepresentation(inky);
-        updateRepresentation(clyde);
     }
 
     private void updateRepresentation(Entity e) {
@@ -78,5 +80,9 @@ public class MainController {
         int oldX = e.getBlockX();
         int oldY = e.getBlockY();
         if (posX != oldX || posY != oldY) Map.move(e,oldX,oldY,posX,posY);
+    }
+
+    public void setScoreText(Text text) {
+        mapDrawer.setScoreText(text);
     }
 }

@@ -7,15 +7,12 @@ import static Java.Main.*;
 
 import java.util.ArrayList;
 
-public class BlinkyBehaviour {
+public class BlinkyBehaviour extends BaseGhostBehaviour {
 
     public BlinkyBehaviour() {}
 
-    public void attachBehaviour(Ghost ghost) {
-        ghost.init(e -> behaviour(ghost));
-    }
-
-    private void behaviour(Ghost ghost) {
+    @Override
+    protected void behaviour(Ghost ghost) {
 
         int pacmanX = pacman.getBlockX(), pacmanY = pacman.getBlockY();
         int ghostX = ghost.getBlockX();

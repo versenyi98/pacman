@@ -62,6 +62,33 @@ A szerepkörök a következőképp oszlanak meg:
     * Pac-Man irányítása az állapottérreprezentációnak
 
 ### 3. Üzleti   folyamatok   modellje
+1. Üzleti szereplők   
+      1. Külső   
+      * Partner   
+      * Alkalmi felhasználó   
+      * Törzsfelhasználó   
+      2. Belső   
+      * Programozó   
+      * Rendszergazda   
+      * Tesztelő   
+2. Üzleti folyamatok   
+      * Játszás   
+      * Tárolás   
+      * Megmérettetés   
+      * Pályakészítés   
+      * Üzemeltetés   
+3. Üzleti entitások   
+      * Játék   
+      * Toplista   
+      * Pálya   
+   
+
+   
+Felhasználó <kbd>&rarr;</kbd> Név kiválasztása <kbd>&rarr;</kbd> Pálya kiválasztása <kbd>&rarr;</kbd> Játszás <kbd>&rarr;</kbd> Játék vége <kbd>&rarr;</kbd> &#10226;    
+ Játék vége <kbd>&rarr;</kbd> Elért eredmény kimutatása <kbd>&rarr;</kbd> Elért eredmény beküldése a toplistába     
+Felhasználó <kbd>&rarr;</kbd> Pálya szerkesztő megnyitása <kbd>&rarr;</kbd> Új pálya létrehozása   
+
+  
 ### 4. Követelmények
 ### 5. Funkcionális  terv
 ### 6. Fizikai környezet
@@ -75,7 +102,33 @@ fejlesztést.A termék verziókezeléséhez a Git lesz használva, pontosabban e
 privát repóra lesz majd szükség, mivel a projekten dolgozó fejlesztők száma    
 meghaladja az ingyenes keretekben biztosított számot.
 ### 7. Absztrakt   domain   modell
+A megvalósítandó rendszer a következő fő komponensekből tevődik össze
+* Entitás (Pacman, Ghost)
+* Pálya 
+* Pálya szerkesztő   
+   
+Az entitások, az aktuálisan betöltött pályán helyezkednek el és folyamatos   
+mozgásban vannak, egyes entitások mint példaul a szellemek(Ghost) a számítógép   
+által vannak irányítva és helyváltoztatásuk független a felhasználótól érkezett    
+inputoktól. A "Pacman" entitást vezérlő felhasználó a következő lépéseket képes   
+megtenni megfelelő input megadásával: 1 mezőt elmozdulni jobbra, balra, fel illetve    
+le. A pálya két féle lehet: hivatalos(ami eleve a játék része) és szerkesztett(amit a   
+felhasználók készíthetnek a pálya szerkesztő segítségével).
 ### 8. Architekturális terv
+A rendszerben található játékokat az MVC(Model - View - Controller) tervezési   
+minta segítségével valósítjuk meg. Az alkalmazás úgy lesz előállítva, hogy     
+skálázható legyen, de ugyanakkor a kezdeti erőforrások is kielégítő tapasztalatot    
+biztosítsanak a felhasználónak. Elősször tekintsünk egy kimondottan kis méretű   
+adatbázist, ami csak 100 felhasználó elért eredményét képes tárolni, ebben az    
+esetben az egyetlen szélsőséges eset az, amikor több felhasználónak ugyanolyan    
+eredménye van, de már nincs tárhely az adatbázisban. Ebben az esetben, annak a   
+felhasználónak az eredménye kerül be az adatbázisba, amelyik hamarabb elérte az   
+adott pontszámot.A változások kezelésénél két esetet különböztetünk meg: amikor   
+az adatbázis kapacitása nő ,illetve amikor az adatbázis kapacitása csökken. A csökkent    
+kapacitás esetén töröljük azokat a tárolt eredményeket, ameyek a jelenlegi toplista    
+alján vannak. A növelt kapacitás esetén, hasonlóképpen kezeljük a bejövő eredményeket,   
+mint az eredeti kapacitáskor, annyi különbséggel, hogy megnő a toplistában feltüntetett    
+eredmények száma.  
 ### 9. Adatbázis terv
 Az applikáció egy fontos funkciója igényli a háttérbeli adatbázis használatát. Ez minden valószínűséggel egy általunk üzemeltetett linux szerveren futó MySQL adatbázis lesz.
 
@@ -88,39 +141,28 @@ Az applikáció és az adatbázis kommunikációja php fájlok felé intézett G
 Ezeken kívül felmerülhet a szükség kiegészítő/segítő fájlok és funkciók iránt, melyek egyszerűsítik majd az adatok lekérésére szolgáló kód szerkezetét.
 ### 10. Implementációs terv
 ### 11. Tesztterv
-Az appliációban elsősorban az üzleti logika kerül tesztelésre, ami a játékos   
-helyváltoztatásából,a játékos és szellem ütközéséből,a játék állapotának     
-lementéséből, az elért pontszámok ellenőrzéséből, a szellemek mozgásából és a     
-játék sikeres végállapota eléréséből áll.A játékos helyváltoztatásának     
-tesztelése akkor jár sikerrel ha a felhasználló által beérkezett inputra, a    
-Pacman helyesen mozdult el egy 'mezőt' horizontálisan vagy vertikálisan,    
-természetesen a speciális eseteket is figyelembe kell venni, például a pálya     
-végének elérése illetve szellemmel való ütközés. Pontszámok ellenőrzése     
-triviális, a pályáról felvett pontok értékével kibővítjük a pontszám számlalót.    
-A szellemek következő lépésének tesztelése kevésbé triviális, figyelembe kell    
-venni a szellem típusát illetve egyes szellem típusok mozgatásához kell tudjuk    
-a Pacman jelenlegi helyzetét a pályán.A szellemek lehetnek: piros, rózsaszín,    
-világoskék, narancssárga típusúak/színűek, mindegyik egyéni módon járkál a    
-pályán, a piros szellem szorosan követi a játékost, a rózsaszín szellem próbál    
-mindíg a játékos elé állni, a világoskék szellem őrködik egy terület zónán     
-amit folyamtosan oda-vissza bejár illetve a narancssárga szellem véletlenszerűen    
-mozog.A játék végállapota kétféle lehet sikeres vagy sikertelen, amit rendre    
-úgy érhetünk el, hogy sikeresen felszedjük a pályán található összes pontot    
-anélkül, hogy a szellemek elkapjanak, a sikertelen játék véget pedig úgy lehet    
-elérni, hogy a játékos kifogy életekből.A játék állapotának lementése a kijelölt    
-billentyűzet gomb lenyomásakor kell majd megtörténnie, a játék állapotának    
-lementése több kicsi más feladattal is jár amit ugyanúgy tesztelnünk kell,    
-például a játék állapotot képesek kell legyünk be is tölteni.A játékos szellem-    
-mel való ütközésének eredményét is kellőképpen kell ellenőrizni, nagyon fontos    
-hogy ennek az interakciónak a hatását a felhasználó azonnal érzékelje különben    
-kellemetlen játék szituációk állhatnak elő, illetve a rendszeren belül is     
-kritikus jellegű hibákat észlelhetnénk.Az üzleti logikán kívül az alkalmazás    
-rezponzívitását is kellőképpen tesztelnünk kell, pontosabban azt, hogy minden     
-kliens oldalról érkező bemenet a helyes funkciót eredményezze és akadálymentesen    
-dolgozza fel a program, azért hogy a termék megőrizhesse felhasználóbarát     
-tulajdonságát.Végső sorban szükség van az adatbázis és program közötti,     
-adatátmenet ellenőrzésére, ebben az esetben az számít helyes eredménynek a     
-tesztelésnél, ha az applikáció által előállított adatok és az adatbázisban     
-tárolt adatok, megegyeznek. 
+| A teszt tárgya | Tesztadat | elvárt visszatérési érték illetve viselkedés | Kilépési feltétel |
+|----------|:-------------:|------:| ------: |
+| A játékos név adása | Üres string | Üzenet a felhasználónak, hogy szükséges nevet adni | Sikeres teszt |
+| A játék indítása | Kattintás | A játék elindul | Elindul a játek|
+| A játék ablak | Ablak fókusz elvesztése | A játék folytatódik a háttérben | A játék nem áll meg |
+| A játék bezárása | Applikációból való kilépés bármilyen módon | A játék vége, foglalt erőforrások visszaszolgáltatása | Az applikáció leáll |
+| Pontrendszer | A játékos felvesz egy pontot | A jelenlegi eredmény növelése adott mennyiséggel | Sikeres teszt |
+| A játékos mozgása | <kbd>A</kbd> | A játékos 1 mezővel balrább kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | <kbd>D</kbd> | A játékos 1 mezővel jobrább kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | <kbd>W</kbd> | A játékos 1 mezővel feljebb kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | <kbd>S</kbd> | A játékos 1 mezővel lejjebb kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | <kbd>&larr;</kbd> | A játékos 1 mezővel balrább kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | <kbd>&rarr;</kbd> | A játékos 1 mezővel jobrább kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | <kbd>&uarr;</kbd> | A játékos 1 mezővel feljebb kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | <kbd>&darr;</kbd> | A játékos 1 mezővel lejjebb kerül, amennyiben lehetséges | Sikeres teszt |
+| A játékos mozgása | érvényes input (lásd feljebb) | A játékos helyzete nem változik, amennyiben olyan mezőre lépne ahol fal van | Sikeres teszt |
+| Érvénytelen input | Bármilyen billentyű vagy egér input aminek nincs beállított funkcionalitása | Semmi | Sikeres teszt |
+| A játék vége | A szellem és a játékos találkoznak | A játék befekeződik | Sikeres teszt |
+| A játék vége | A játékos összegyüjtötte az összes pontot | A játék befekeződik | Sikeres teszt |
+
+
+
+
 ### 12. Telepítési terv
 ### 13. Karbantartási  terv

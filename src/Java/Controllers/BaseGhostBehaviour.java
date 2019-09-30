@@ -19,7 +19,7 @@ public class BaseGhostBehaviour {
     /**
      * Just checks for collision and if it happens replaces the ghost...
      * */
-    private void behaviour(Ghost ghost) {
+    protected void behaviour(Ghost ghost) {
         if (ghost.intersects(pacman)) {
             randX = (int)(Math.random()*100)%28;
             randY = (int)(Math.random()*100)%31;

@@ -7,7 +7,7 @@ import static Java.Main.*;
 
 import java.util.ArrayList;
 
-public class PinkyBehaviour {
+public class PinkyBehaviour extends BaseGhostBehaviour {
 
     private int pacmanX = -1, pacmanY = -1;
     private int pacmanLastX = -1, pacmanLastY = -1;
@@ -15,11 +15,8 @@ public class PinkyBehaviour {
 
     public PinkyBehaviour() {}
 
-    public void attachBehaviour(Ghost ghost) {
-        ghost.init(e -> behaviour(ghost));
-    }
-
-    private void behaviour(Ghost ghost) {
+    @Override
+    protected void behaviour(Ghost ghost) {
 
         int distanceToWall = 0;
 

@@ -5,11 +5,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class Pacman extends Entity {
 
     private SnapshotParameters params;
     private int rotation;
+    private long score;
 
     public Pacman(int id) {
         super(id);
@@ -18,6 +20,7 @@ public class Pacman extends Entity {
         params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
         rotation = 0;
+        score = 0;
     }
 
     private Image rotateImg() {
@@ -34,6 +37,14 @@ public class Pacman extends Entity {
 
     public void setRotation(int rotation) {
         this.rotation = rotation;
+    }
+
+    public long getScore() {
+        return score;
+    }
+
+    public void setScore(long score) {
+        this.score = score;
     }
 
 }
