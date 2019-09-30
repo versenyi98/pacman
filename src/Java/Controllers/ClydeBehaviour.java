@@ -6,7 +6,7 @@ import Java.UI.Model.Ghost;
 import java.util.ArrayList;
 
 
-public class ClydeBehaviour {
+public class ClydeBehaviour extends BaseGhostBehaviour {
 
     private class State {
         State(int x, int y, State parent) {
@@ -33,12 +33,8 @@ public class ClydeBehaviour {
         private State parent;
     }
 
-
-    public void attachBehaviour(Ghost ghost) {
-        ghost.init(e -> behaviour(ghost));
-    }
-
-    private void behaviour(Ghost ghost) {
+    @Override
+    protected void behaviour(Ghost ghost) {
         int pacmanX = 0, pacmanY = 0;
         int ghostX = ghost.getBlockX();
         int ghostY = ghost.getBlockY();

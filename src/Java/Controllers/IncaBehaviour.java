@@ -5,7 +5,7 @@ import Java.UI.Model.Ghost;
 
 import java.util.ArrayList;
 
-public class IncaBehaviour {
+public class IncaBehaviour extends BaseGhostBehaviour {
 
 
     private class State {
@@ -32,13 +32,9 @@ public class IncaBehaviour {
 
         private State parent;
     }
-
-
-    public void attachBehaviour(Ghost ghost) {
-        ghost.init(e -> behaviour(ghost));
-    }
-
-    private void behaviour(Ghost ghost) {
+    
+    @Override
+    protected void behaviour(Ghost ghost) {
         int pacmanX = 0, pacmanY = 0, blinkyX = 0, blinkyY = 0;
         int ghostX = ghost.getBlockX();
         int ghostY = ghost.getBlockY();
