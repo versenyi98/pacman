@@ -61,9 +61,7 @@ public class Map {
         set(to_x, to_y,to_val*id);
 
         e.setBlockPos(to_x,to_y);
-        if (e instanceof Ghost) {
-            e.setVelocity(to_x-from_x, to_y-from_y);
-        } else if (e instanceof Pacman && Map.get(to_x, to_y) != -1) {
+        if (e instanceof Pacman && Map.get(to_x, to_y) != -1) {
             ((Pacman) e).setScore(((Pacman) e).getScore() + 1);
         }
     }

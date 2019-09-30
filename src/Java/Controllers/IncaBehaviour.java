@@ -78,7 +78,8 @@ public class IncaBehaviour extends BaseGhostBehaviour {
                     state = state.parent;
                 }
 
-                Map.move(ghost,ghostX,ghostY,state.getX(),state.getY());
+                ghost.setVelocity((state.getX() - ghostX) * 18, (state.getY() - ghostY) * 18);
+                ghost.update();
                 break;
             }
 

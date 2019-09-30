@@ -73,6 +73,10 @@ public class MainController {
 
     private void updateRepresentation() {
         updateRepresentation(pacman);
+        updateRepresentation(blinky);
+        updateRepresentation(pinky);
+        updateRepresentation(inky);
+        updateRepresentation(clyde);
     }
 
     private void updateRepresentation(Entity e) {

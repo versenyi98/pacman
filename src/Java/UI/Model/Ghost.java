@@ -32,7 +32,6 @@ public class Ghost extends Entity {
     }
 
     public void play() {
-        movement.play();
         behaviour.play();
     }
 
