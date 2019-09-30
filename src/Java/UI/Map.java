@@ -1,8 +1,8 @@
 package Java.UI;
 
 import Java.UI.Model.Entity;
+import Java.UI.Model.Ghost;
 
-import static Java.Main.BLOCK_SIZE;
 
 public class Map {
     private static Integer[][] map = {
@@ -45,34 +45,24 @@ public class Map {
     }
 
     public static void move(Entity e, int from_x, int from_y, int to_x, int to_y) {
-        move(e, from_x, from_y, to_x, to_y,true);
-    }
-
-    public static void move(Entity e, int from_x, int from_y, int to_x, int to_y, boolean safe) {
         if (isOut(from_x,from_y) || isOut(to_x,to_y)) return;
-
-        if (safe) {
-            int vx = Math.abs(from_x - to_x);
-            int vy = Math.abs(from_y - to_y);
-            int sum = vx + vy;
-            if (sum != 1) return;
-        } else {
-            e.setPosition(to_x * BLOCK_SIZE, to_y * BLOCK_SIZE);
-        }
 
         int id = e.getId();
 
-        int from_val = get(from_x,from_y);
-        int to_val = get(to_x,to_y);
-
-        set(from_x, from_y,from_val/id);
-        set(to_x, to_y,to_val*id);
+        if (e instanceof Ghost) {
+            e.setVelocity(to_x-from_x, to_y-from_y);
+        }
 
         e.setBlockPos(to_x,to_y);
+        int from_val = get(from_x,from_y);
+        set(from_x, from_y,from_val/id);
+
+        int to_val = get(to_x,to_y);
+        set(to_x, to_y,to_val*id);
+
     }
 
     private static void set(int x, int y, int val) {
-        if (isOut(x,y)) return;
         map[y][x] = val;
     }
 

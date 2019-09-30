@@ -7,33 +7,40 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 
+import static Java.Main.BLOCK_SIZE;
+
 public class Ghost extends Entity {
 
-    private Timeline testLoop;
+    private Timeline behaviour = new Timeline();
+    private Timeline movement = new Timeline();
+    private final double tickSpeed = 0.25;
 
     public Ghost(int id) {
         super(id);
     }
 
     // Separate thread for the ghosts' custom behaviour
-    public void init(EventHandler<ActionEvent> e) {
-        KeyFrame kf = new KeyFrame(Duration.seconds(0.25), e);
-
-        testLoop = new Timeline();
-        testLoop.getKeyFrames().add( kf );
-        testLoop.setCycleCount( Animation.INDEFINITE );
+    public void init(EventHandler<ActionEvent> b) {
+        behaviour.getKeyFrames().add( new KeyFrame(Duration.seconds(tickSpeed), b) );
+        behaviour.setCycleCount( Animation.INDEFINITE );
         play();
     }
 
+    public void setController(EventHandler<ActionEvent> controller) {
+        movement.getKeyFrames().add( new KeyFrame(Duration.seconds(tickSpeed/BLOCK_SIZE), controller) );
+        movement.setCycleCount( Animation.INDEFINITE );
+    }
+
     public void play() {
-        testLoop.play();
+        movement.play();
+        behaviour.play();
     }
 
     public void pause() {
-        testLoop.pause();
+        behaviour.pause();
     }
 
     public void stop() {
-        testLoop.stop();
+        behaviour.stop();
     }
 }

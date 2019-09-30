@@ -12,12 +12,13 @@ import javafx.util.Duration;
 
 public class MainController {
 
+    private BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
+    private BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
+    private PinkyBehaviour pinkyBehaviour = new PinkyBehaviour();
+    private BaseGhostController baseGhostController = new BaseGhostController();
+
     public MainController(Scene mainScene) {
         mapDrawer = new MapDrawer(mainScene);
-        BaseGhostBehaviour baseGhostBehaviour = new BaseGhostBehaviour();
-
-        BlinkyBehaviour blinkyBehaviour = new BlinkyBehaviour();
-        PinkyBehaviour pinkyBehaviour = new PinkyBehaviour();
 
         pacman.setImage("resources/pacman.png");
         blinky.setImage("resources/ghost1.png");
@@ -25,12 +26,17 @@ public class MainController {
         inky.setImage("resources/ghost3.png");
         clyde.setImage("resources/ghost4.png");
 
+        mapDrawer.renderMap();
+
+        baseGhostController.attachBehaviour(blinky);
+        baseGhostController.attachBehaviour(pinky);
+
         blinkyBehaviour.attachBehaviour(blinky);
         pinkyBehaviour.attachBehaviour(pinky);
         baseGhostBehaviour.attachBehaviour(inky);
         baseGhostBehaviour.attachBehaviour(clyde);
 
-        mapDrawer.renderMap();
+
 
         PacmanController pacmanController = new PacmanController();
         mainScene.setOnKeyPressed(pacmanController::handleKeyPress);
@@ -48,7 +54,7 @@ public class MainController {
         });
 
         // Renders the entities and updates the map array
-        KeyFrame kf = new KeyFrame(Duration.seconds(1.0 / 30.0),e -> {
+        KeyFrame kf = new KeyFrame(Duration.seconds(1.0/30.0),e -> {
             mapDrawer.renderEntities();
             updateRepresentation();
         });
@@ -61,8 +67,6 @@ public class MainController {
 
     private void updateRepresentation() {
         updateRepresentation(pacman);
-        updateRepresentation(blinky);
-        updateRepresentation(pinky);
         updateRepresentation(inky);
         updateRepresentation(clyde);
     }

@@ -1,6 +1,7 @@
 package Java;
 
-import Java.Controllers.*;
+import Java.Controllers.MainController;
+import Java.Controllers.MapDrawer;
 import Java.UI.Model.Ghost;
 import Java.UI.Model.Pacman;
 import javafx.application.Application;
@@ -19,6 +20,7 @@ public class Main extends Application {
     public static final int BLOCK_SIZE = 18;
     public static final double WINDOW_HEIGHT = 31 * BLOCK_SIZE;
     public static final double WINDOW_WIDTH = 28 * BLOCK_SIZE;
+    public static MainController mainController;
 
     @Override
     public void start(Stage primaryStage) {
@@ -30,7 +32,7 @@ public class Main extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.setResizable(false);
 
-        MainController mainController = new MainController(mainScene);
+        mainController = new MainController(mainScene);
         primaryStage.show();
     }
 

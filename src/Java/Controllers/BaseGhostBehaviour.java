@@ -24,7 +24,6 @@ public class BaseGhostBehaviour {
             randX = (int)(Math.random()*100)%28;
             randY = (int)(Math.random()*100)%31;
             if (Map.get(randX,randY) > 0) {
-                Map.move(ghost, ghost.getBlockX(),ghost.getBlockY(),randX,randY, false);
                 mapDrawer.renderEntities();
             } else {
                 behaviour(ghost);

@@ -24,9 +24,6 @@ class PacmanController {
 
     void handleKeyPress(KeyEvent keyEvent) {
         KeyCode code = keyEvent.getCode();
-        if (code == KeyCode.W || code == KeyCode.A || code == KeyCode.S || code == KeyCode.D) {
-            moveGhost(code);
-        }
         if (representationService.invertKeyCode(code) == null) return;
 
 		int canMove = representationService.canMove(pacman, keyEvent.getCode());
@@ -37,27 +34,6 @@ class PacmanController {
 		pacman.setRotation(getRotation());
 		pacmanTimeline.play();
 
-    }
-
-    private void moveGhost(KeyCode code) {
-        switch (code) {
-            case W:
-                if (representationService.canMove(blinky, KeyCode.UP) > 0)
-                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX(),blinky.getBlockY()-1);
-                break;
-            case A:
-                if (representationService.canMove(blinky, KeyCode.LEFT) > 0)
-                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX()-1,blinky.getBlockY());
-                break;
-            case S:
-                if (representationService.canMove(blinky, KeyCode.DOWN) > 0)
-                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX(),blinky.getBlockY()+1);
-                break;
-            case D:
-                if (representationService.canMove(blinky, KeyCode.RIGHT) > 0)
-                Map.move(blinky,blinky.getBlockX(),blinky.getBlockY(),blinky.getBlockX()+1,blinky.getBlockY());
-                break;
-        }
     }
 
     /**

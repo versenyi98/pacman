@@ -69,24 +69,14 @@ public class MapDrawer {
     /**
      * Actually renders the entities
      * */
-    void renderEntities() {
+    public void renderEntities() {
         // Clears the canvas (there are 2 separated for the entities and the background)
         entities.getGraphicsContext2D().clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
-        for (int i = 0; i < 28; i++) {
-            for (int n = 0; n < 31; n++) {
-
-                int v = Map.get(i,n);
-
-                // We don't need to render the walls again
-                if (v == 0) continue;
-
-                if (v % pacman.getId() == 0) pacman.render( entities.getGraphicsContext2D());
-                if (v % blinky.getId() == 0) blinky.render(entities.getGraphicsContext2D() );
-                if (v % pinky.getId() == 0) pinky.render(entities.getGraphicsContext2D() );
-                if (v % inky.getId() == 0) inky.render(entities.getGraphicsContext2D() );
-                if (v % clyde.getId() == 0) clyde.render(entities.getGraphicsContext2D() );
-            }
-        }
+        pacman.render( entities.getGraphicsContext2D());
+        blinky.render(entities.getGraphicsContext2D());
+        pinky.render(entities.getGraphicsContext2D());
+        inky.render(entities.getGraphicsContext2D());
+        clyde.render(entities.getGraphicsContext2D());
     }
 
     private double getBlockCoords(int b) {

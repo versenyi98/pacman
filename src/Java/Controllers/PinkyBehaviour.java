@@ -77,8 +77,7 @@ public class PinkyBehaviour {
                     state = state.parent;
                 }
 
-                ghost.setVelocity((state.getX() - ghostX) * 18, (state.getY() - ghostY) * 18);
-                ghost.update();
+                Map.move(ghost,ghostX,ghostY,state.getX(),state.getY());
                 break;
             }
 

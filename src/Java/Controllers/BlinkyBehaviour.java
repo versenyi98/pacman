@@ -17,18 +17,9 @@ public class BlinkyBehaviour {
 
     private void behaviour(Ghost ghost) {
 
-        int pacmanX = 0, pacmanY = 0;
+        int pacmanX = pacman.getBlockX(), pacmanY = pacman.getBlockY();
         int ghostX = ghost.getBlockX();
         int ghostY = ghost.getBlockY();
-
-        for (int i = 0; i < 31; i++) {
-            for (int j = 0; j < 27 ; j++) {
-                if (Map.get(j, i) > 0 && Map.get(j, i) % 2 == 0) {
-                    pacmanY = i;
-                    pacmanX = j;
-                }
-            }
-        }
 
         ArrayList<State> opened = new ArrayList<State>();
         ArrayList<State> closed = new ArrayList<State>();
@@ -44,9 +35,7 @@ public class BlinkyBehaviour {
                 while (state.parent != null && state.parent.parent != null) {
                     state = state.parent;
                 }
-
-                ghost.setVelocity((state.getX() - ghostX) * 18, (state.getY() - ghostY) * 18);
-                ghost.update();
+                Map.move(ghost,ghostX,ghostY,state.getX(),state.getY());
                 break;
             }
 
